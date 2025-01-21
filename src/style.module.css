@@ -1,0 +1,23 @@
+.main_wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color:  #2D2D2D;
+}
+
+.header{
+    display: flex;
+    margin-bottom: 4rem;
+    padding: 25px;
+}
+
+.details{
+    flex: 2;
+    padding: 25px;
+}
+
+.recommendations{
+    flex: 1;
+    padding: 25px;
+
+}

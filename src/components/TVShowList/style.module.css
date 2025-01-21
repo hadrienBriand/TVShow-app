@@ -1,0 +1,18 @@
+.overlay:hover{
+    overflow-x: overlay;
+}
+.overlay {
+    scrollbar-width: thin; 
+    scrollbar-color: #818181 #333; 
+  }
+  
+  .overlay::-webkit-scrollbar {
+    height: 8px;
+    border-radius: 10px;
+  }
+  
+  .overlay::-webkit-scrollbar-track {
+    background-color: #333;
+    border-radius: 10px;
+  }
+  
