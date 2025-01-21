@@ -1,50 +1,31 @@
-# React + TypeScript + Vite
+# TVShow App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TVShow App is a React application developed with TypeScript and Vite. The app provides users with recommendations for TV shows based on a selected series. It leverages the power of modern web technologies like Vite for fast development and TypeScript for type safety.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Search for TV Shows**: Find TV shows by typing their name in the search bar.
+- **Recommendations**: Get a curated list of similar TV shows based on the currently selected show.
+- **Detailed TV Show Information**: View information such as title, rating, and more about a specific TV show.
+- **User-Friendly Interface**: Smooth, responsive, and modern UI design.
+- **Drag-and-Scroll**: Scroll horizontally through TV show recommendations by dragging with the mouse.
+- **Dynamic Background**: The app dynamically updates its background image based on the selected TV show.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React**: For building the user interface.
+- **TypeScript**: To ensure type safety and improve code reliability.
+- **Vite**: For a fast and efficient development environment.
+- **Tailwind CSS**: For styling the application.
+- **API Integration**: Uses external APIs to fetch TV show details and recommendations.
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+To get started with the app, follow these steps:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/hadrienBriand/TVShow-app.git
+   cd TVShow-app
+   npm install
+   npm run dev
