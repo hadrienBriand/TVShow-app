@@ -1,5 +1,6 @@
- import { StarFill,Star as StarEmpty,StarHalf } from "react-bootstrap-icons"
-export function Rating({rating}:{rating:number}){
+import s from './style.module.css'
+import { StarFill,Star as StarEmpty,StarHalf } from "react-bootstrap-icons"
+export function Rating({rating,ratingCount}:{rating:number,ratingCount:number}){
     const starList:JSX.Element[] = [];
     const fullStar = Math.floor(rating)
     const halfStar = rating - fullStar >= 0.5;
@@ -17,6 +18,7 @@ export function Rating({rating}:{rating:number}){
         <div className="flex items-center">
            {starList}
             { rating }
+            <span className={`ml-4 text-sm font-light ${s.letterSpacing}`}>({ratingCount})</span>
         </div>
     </div>
 }

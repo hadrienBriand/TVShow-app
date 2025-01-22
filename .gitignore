@@ -1,5 +1,5 @@
-src/config/constants.ts
-
+.env
+improve.md
 # Logs
 logs
 *.log

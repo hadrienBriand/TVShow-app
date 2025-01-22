@@ -4,9 +4,9 @@ export  interface TVShow {
   title: string,
   backdrop_path: string;
   vote_average:number;
+  vote_count:number;
   overview:string;
   poster_path:string;
-  vote_count:number;
   genre_ids:number[]
 }
 

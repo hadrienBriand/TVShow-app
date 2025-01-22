@@ -15,6 +15,7 @@ function App() {
 
 
   const [currentTVShow,setCurrentTVShow] =useState<TVShow | null>(null);
+  console.log(currentTVShow)
   const [recommendationsList,setReccomendationsList] = useState<TVShow[] | null>(null)
   const [searchError,setSearchError]=useState(false)
   const [mode,setMode] = useState('tv')
