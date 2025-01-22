@@ -1,6 +1,6 @@
 # TVShow App
 
-TVShow App is a React application developed with TypeScript and Vite. The app provides users with recommendations for TV shows based on a selected series. It leverages the power of modern web technologies like Vite for fast development and TypeScript for type safety.
+TVShow App is a React application developed with TypeScript and Vite. The app provides users with recommendations for TV shows or Movies based on a selected series/movies. It leverages the power of modern web technologies like Vite for fast development and TypeScript for type safety.
 
 ## Features
 
