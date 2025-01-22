@@ -29,3 +29,7 @@ To get started with the app, follow these steps:
    cd TVShow-app
    npm install
    npm run dev
+
+2. Add tmdb apiKey in your .env
+   ```bash
+   VITE_API_KEY=yourKey
