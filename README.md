@@ -4,11 +4,11 @@ TVShow App is a React application developed with TypeScript and Vite. The app pr
 
 ## Features
 
-- **Search for TV Shows**: Find TV shows by typing their name in the search bar.
-- **Recommendations**: Get a curated list of similar TV shows based on the currently selected show.
-- **Detailed TV Show Information**: View information such as title, rating, and more about a specific TV show.
+- **Search for TV Shows / Movies**: Find TV shows or Movies by typing their name in the search bar.
+- **Recommendations**: Get a curated list of similar TV shows/Movies based on the currently selected show.
+- **Detailed TV Show / Movies Information**: View information such as title, rating, and more about a specific TV show / Movie.
 - **User-Friendly Interface**: Smooth, responsive, and modern UI design.
-- **Drag-and-Scroll**: Scroll horizontally through TV show recommendations by dragging with the mouse.
+- **Drag-and-Scroll**: Scroll horizontally through TV show / Movie recommendations by dragging with the mouse.
 - **Dynamic Background**: The app dynamically updates its background image based on the selected TV show.
 
 ## Technologies Used
