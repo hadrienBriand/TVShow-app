@@ -10,16 +10,18 @@ import logo from './assets/images/logo.png'
 import { TVShowList } from './components/TVShowList/TVShowList'
 import { SearchBar } from './components/SearchBar/SearchBar'
 import { Modale } from './components/Modale/Modale'
+import { SwitchMode } from './components/Modale/SwitchMode/SwitchMode'
 function App() {
 
 
   const [currentTVShow,setCurrentTVShow] =useState<TVShow | null>(null);
   const [recommendationsList,setReccomendationsList] = useState<TVShow[] | null>(null)
   const [searchError,setSearchError]=useState(false)
-
-  async function fetchPopulars(){
+  const [mode,setMode] = useState('tv')
+  const [searchValue, setSearchValue] = useState('');
+  async function fetchPopulars(mode:string){
     try{
-      const popular = await TVShowAPI.fetchPopulars()
+      const popular = await TVShowAPI.fetchPopulars(mode)
       if(popular.length > 0){
         setCurrentTVShow(popular[0])
       }
@@ -28,20 +30,25 @@ function App() {
     }
    
   }
-  async function fetchRecommendations(tvShowId:number){
+  async function fetchRecommendations(tvShowId:number,mode:string){
+    
    try{
-    const recommendations = await TVShowAPI.fetchRecommendations(tvShowId)
+    const recommendations = await TVShowAPI.fetchRecommendations(tvShowId,mode)
     if(recommendations.length > 0){
       setReccomendationsList(recommendations.slice(0,10))
     }
+    else{
+      console.warn("No recommendations found for this TV show.");
+      setReccomendationsList([]);
+    }
    }catch(error){
-    alert("Impossible de récupérer les recommandations" + error)
+    console.error("Impossible de récupérer les recommandations ***" + error)
    }
   }
 
-  async function searchTvShow(tvShowName:string){
+  async function searchTvShow(tvShowName:string,mode:string){
   try{
-    const searchResponse = await TVShowAPI.fetchByTitle(tvShowName)
+    const searchResponse = await TVShowAPI.fetchByTitle(tvShowName,mode)
     if(searchResponse.length > 0) {
       setCurrentTVShow(searchResponse[0])
     }
@@ -52,18 +59,29 @@ function App() {
     alert('La recherche a échoué' + error)  
   }
   }
+  const changeMode = () => {
+    setCurrentTVShow(null); 
+    setReccomendationsList([]);
+    setMode((prevMode) => (prevMode === "tv" ? "movie" : "tv")); 
+    setSearchValue(''); 
+  };
 
   useEffect( () => {
-    fetchPopulars()
-  },[])
+    fetchPopulars(mode).then(() => {
+      setReccomendationsList([]);
+    });
+  },[mode])
 
 
   useEffect(() => {
-    if(currentTVShow){
-      fetchRecommendations(currentTVShow.id)
+    if(currentTVShow ){
+      fetchRecommendations(currentTVShow.id,mode)
+    }
+    else{
+      setReccomendationsList([]);
     }
 
-  },[currentTVShow])
+  },[currentTVShow,mode])
 
 
   
@@ -78,15 +96,18 @@ function App() {
        <Logo image={logo} title='Watowatch' subtitles='kestu veux mater ? ' />
        </div>
        <div className="w-2/6">
-        <SearchBar onSubmit={searchTvShow} />
+       <SearchBar  value={searchValue} onChange={(value) => setSearchValue(value)}   onSubmit={(tvShowName) => searchTvShow(tvShowName, mode)} />
+       </div>
+       <div className="w-2/6">
+        <SwitchMode mode={mode} onBtnClick={changeMode} />
        </div>
       </div>
       <div className={s.details}>
-      {currentTVShow && <TVShowDetails tvShow={currentTVShow} />} 
+      {currentTVShow && <TVShowDetails tvShow={currentTVShow} mode={mode} />} 
       </div>
       <div className={`${s.recommendations} flex justify-evenly`}>
         { recommendationsList && recommendationsList.length > 0 &&  
-          <TVShowList onClickItem ={setCurrentTVShow} tvShowList={recommendationsList} /> }
+          <TVShowList onClickItem ={setCurrentTVShow} tvShowList={recommendationsList} mode={mode} /> }
       </div>
        {searchError && <Modale error='No result for your search, try again'   onXClick={() => setSearchError(false)}/> }
     </div>

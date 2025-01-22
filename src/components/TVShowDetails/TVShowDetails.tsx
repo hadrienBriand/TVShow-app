@@ -1,13 +1,13 @@
 import { TVShow } from '../../config/interfaces'
 import {Rating} from './../Rating/Rating.tsx'
 
-export function TVShowDetails({tvShow}:{tvShow:TVShow | null}) { 
+export function TVShowDetails({tvShow,mode}:{tvShow:TVShow | null,mode:string}) { 
     const rating: number = tvShow ? tvShow.vote_average / 2 : 0;
     return (
         <div className='text-white'>
           {tvShow ? (
             <div className='w-full md:w-3/4 lg:w-2/4 cursor-pointer'>
-                <h2 className="text-5xl mb-3">{tvShow.name}</h2>
+                <h2 className="text-5xl mb-3">{mode === "tv" ? tvShow.name : tvShow.title}</h2>
                 <Rating rating={rating} />
                 <p className='text-base mt-3'>{tvShow.overview}</p>
             </div>
